@@ -1,0 +1,110 @@
+//
+//  main.c
+//  a012
+//
+//  Created by 孫渝鈞 on 2021/8/31.
+//
+
+#include <stdio.h>
+
+int main() {
+    char str[11];
+    fgets(str,11,stdin);
+    int F;
+    if(str[0]=='A'){
+        F=0*9+1;
+    }
+    else if(str[0]=='B'){
+        F=1*9+1;
+    }
+    else if(str[0]=='C'){
+        F=2*9+1;
+    }
+    else if(str[0]=='D'){
+        F=3*9+1;
+    }
+    else if(str[0]=='E'){
+        F=4*9+1;
+    }
+    else if(str[0]=='F'){
+        F=5*9+1;
+    }
+    else if(str[0]=='G'){
+        F=6*9+1;
+    }
+    else if(str[0]=='H'){
+        F=7*9+1;
+    }
+    else if(str[0]=='I'){
+        F=4*9+3;
+    }
+    else if(str[0]=='J'){
+        F=8*9+1;
+    }
+    else if(str[0]=='K'){
+        F=9*9+1;
+    }
+    else if(str[0]=='L'){
+        F=0*9+2;
+    }
+    else if(str[0]=='M'){
+        F=1*9+2;
+    }
+    else if(str[0]=='N'){
+        F=2*9+2;
+    }
+    else if(str[0]=='O'){
+        F=5*9+3;
+    }
+    else if(str[0]=='P'){
+        F=3*9+2;
+    }
+    else if(str[0]=='Q'){
+        F=4*9+2;
+    }
+    else if(str[0]=='R'){
+        F=5*9+2;
+    }
+    else if(str[0]=='S'){
+        F=6*9+2;
+    }
+    else if(str[0]=='T'){
+        F=7*9+2;
+    }
+    else if(str[0]=='U'){
+        F=8*9+2;
+    }
+    else if(str[0]=='V'){
+        F=9*9+2;
+    }
+    else if(str[0]=='W'){
+        F=2*9+3;
+    }
+    else if(str[0]=='X'){
+        F=0*9+3;
+    }
+    else if(str[0]=='Y'){
+        F=1*9+3;
+    }
+    else{
+        F=3*9+3;
+    }
+    int center;
+    str[1]=str[1]-48; //ascii碼轉int
+    str[2]=str[2]-48;
+    str[3]=str[3]-48;
+    str[4]=str[4]-48;
+    str[5]=str[5]-48;
+    str[6]=str[6]-48;
+    str[7]=str[7]-48;
+    str[8]=str[8]-48;
+    str[9]=str[9]-48;
+    center=(str[1]*8)+(str[2]*7)+(str[3]*6)+(str[4]*5)+(str[5]*4)+(str[6]*3)+(str[7]*2)+(str[8]*1)+str[9];
+    if((F+center)%10==0){
+        printf("real\n");
+    }
+    else{
+        printf("fake\n");
+    }
+    return 0;
+}
