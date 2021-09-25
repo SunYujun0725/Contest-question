@@ -1,0 +1,64 @@
+//
+//  main.c
+//  5.
+//
+//  Created by 孫渝鈞 on 2020/11/25.
+//  Copyright © 2020 孫渝鈞. All rights reserved.
+//
+/* probID: MT2A-5-Quick-Select */
+//#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#define swap(x,y) {int t; t = x; x = y; y = t;}
+/*int A[10000000];
+int quick_select(int [],int,int,int);
+int main()
+{
+    int n,k,value;
+    scanf("%d",&n);
+    for(int i=0;i<n;i++){
+        scanf("%d",&A[i]);
+    }
+    
+    scanf("%d",&k);
+    value=quick_select(A,0,n-1,k);
+    printf("%d",value);
+    
+    return 0;
+}*/
+
+int partition(int A[], int left, int right)
+{
+    int x = A[right], i = left;
+    for (int j = left; j <= right - 1; j++) {
+        if (A[j] >= x) {
+            swap(A[i], A[j]);
+            i++;
+        }
+    }
+    swap(A[i], A[right]);
+    return i;
+}
+  
+int quick_select(int A[], int left, int right, int k)
+{
+  
+    if (k > 0 && k <= right - left + 1) {
+  
+     
+        int index = partition(A, left, right);
+  
+       
+        if (index - left == k - 1)
+            return A[index];
+  
+        if (index - left > k - 1)
+            return quick_select(A, left, index - 1, k);
+  
+        
+        return quick_select(A, index + 1, right,k - index + left - 1);
+    }
+    
+    return k;
+    
+}
