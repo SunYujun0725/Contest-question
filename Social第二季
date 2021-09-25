@@ -1,0 +1,117 @@
+//
+//  main.c
+//  HW W2-1-2
+//
+//  Created by 孫渝鈞 on 2021/3/18.
+//  Copyright © 2021 孫渝鈞. All rights reserved.
+//
+
+#include <stdio.h>
+#include <stdbool.h>
+int n; //全域變數
+int check=0;
+int ans[505][505];
+int iswalk[505];
+int dfs(int a,int b)
+{
+    check=0;
+    iswalk[a]=1;
+    for(int i=0;i<n;i++){
+        
+        if(check){
+            break;
+        }
+        if(ans[a][i]!=n+1){
+            if(ans[a][i]==b){
+                check=1;
+                return 0;
+            }
+            else{
+                if(iswalk[ans[a][i]]==0){
+                    dfs(ans[a][i],b);
+                }
+            }
+        }
+    }
+    return 0;
+}
+int main()
+{
+ 
+    scanf("%d",&n);    //5
+    int m;
+    scanf("%d",&m);    //3
+    int a[m][2];
+    for(int i=0;i<m;i++){
+        scanf("%d",&a[i][0]);  //0 1
+        scanf("%d",&a[i][1]);  //2 1
+    }                          //2 4
+   
+  
+    for(int i=0;i<505;i++){
+        for(int j=0;j<505;j++){
+            ans[i][j]=n+1;  //全部初始化為n+1
+        }
+    }
+    for(int i=0;i<505;i++){
+        ans[i][0]=i;
+    }
+    int place[n];
+    for(int i=0;i<n;i++){
+        place[i]=0;  //全部初始化為0
+    }
+
+    for(int i=0;i<m;i++){
+        int o=0;
+        int p=0;
+        for(;o<n;o++){
+            if(a[i][0]==o){
+                for(;p<n;p++){
+                    if(a[i][1]==p){
+                        ans[o][++place[o]]=p;
+                        ans[p][++place[p]]=o;
+                    }
+                }
+            }
+        }
+    }
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            printf("%d",ans[i][j]);
+        }
+        printf("\n");
+    }
+    int k;
+    scanf("%d",&k);
+    int kk[k][2];
+    for(int i=0;i<k;i++){
+        scanf("%d",&kk[i][0]);
+        scanf("%d",&kk[i][1]);
+    }
+ 
+    for(int i=0;i<k;i++){
+        
+        for(int i=0;i<505;i++){
+            iswalk[i]=0;
+        }
+        dfs(kk[i][0],kk[i][1]);
+        if(check!=0){
+            printf("Yes\n");
+        }
+        else{
+            printf("No\n");
+        }
+        
+    }
+    
+    return 0;
+}
+/*if(ans[a][i]==b){
+    check=1;
+    return 0;
+}
+else if(ans[a][i]!=b&&ans[a][i]!=n+1){
+    if(iswalk[ans[a][i]]==0){
+        dfs(ans[a][i],b);
+    }
+}*/
