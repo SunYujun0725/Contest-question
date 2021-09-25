@@ -1,0 +1,37 @@
+//
+//  main.c
+//  a010
+//
+//  Created by 孫渝鈞 on 2021/8/27.
+//
+
+#include <stdio.h>
+
+int main() {
+    int a,b;
+    scanf("%d %d",&a,&b);
+    int o[a][b];
+    for(int i=0;i<a;i++){
+        for(int k=0;k<b;k++){
+            scanf("%d",&o[i][k]);
+        }
+    }
+    int f[b][a];
+    for(int i=0;i<a;i++){
+        for(int k=0;k<b;k++){
+            f[k][i]=o[i][k];
+        }
+    }
+    for(int i=0;i<b;i++){
+        for(int k=0;k<a;k++){
+            if(k==0){
+                printf("%d ",f[i][k]);
+            }
+            else{
+                printf("%d",f[i][k]);
+            }
+        }
+        printf("\n");
+    }
+    return 0;
+}
