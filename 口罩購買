@@ -1,0 +1,47 @@
+//
+//  main.c
+//  B
+//
+//  Created by 孫渝鈞 on 2021/2/22.
+//  Copyright © 2021 孫渝鈞. All rights reserved.
+//
+
+#include <stdio.h>
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    int a[t][2];
+    for(int i=0;i<t;i++){
+        scanf("%d",&a[i][0]);
+        scanf("%d",&a[i][1]);
+    }
+    int weektotal;
+    int todayhave;
+    int stillneed;
+    for(int i=0;i<t;i++){
+        weektotal=7*a[i][0];
+        todayhave=7*a[i][0];
+        stillneed=a[i][1]-todayhave;
+        if(stillneed<=0){
+            printf("%d\n",0);
+        }
+        else if(stillneed>=1&&stillneed<=weektotal){
+            printf("%d\n",14);
+        }
+        else{
+            int ans;
+            ans=stillneed/weektotal;
+            if(ans==0){
+                printf("%d\n",ans*14);
+            }
+            else{
+                printf("%d\n",(ans+1)*14);
+            }
+        }
+        
+    }
+    
+    return 0;
+}
