@@ -1,0 +1,24 @@
+//
+//  main.c
+//  a007
+//
+//  Created by 孫渝鈞 on 2021/8/24.
+//
+
+#include <stdio.h>
+
+int main() {
+
+    char str[100001];
+    fgets(str,100001,stdin);
+    int m = 0;
+    while (*(str + m) != '\0')  //找字串長度
+    {
+      m++;
+    }
+    for(int i=0;i<m;i++){
+        printf("%c",str[i]-7);
+    }
+    printf("\n");
+    return 0;
+}
